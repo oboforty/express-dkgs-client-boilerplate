@@ -7,15 +7,19 @@ import path from 'path';
 
 import { create, engine } from "express-handlebars";
 
+import jwt from './middleware/jwt';
+
 import routes from './routes';
 
 export function initServer(): Server {
   const app = express();
   const httpServer = http.createServer(app);
 
+  // middleware
   app.use(helmet());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(jwt);
 
   app.use(routes);
 
@@ -32,19 +36,24 @@ export function initServer(): Server {
 //   return;
 // });
 
-  // @TODO: @LATER: make it work with __dirname, which points to dist/ .....
-  var hbs = create({
-    layoutsDir: "src/views/layouts",
-    partialsDir: "src/views/partials",
-    helpers: {
-        foo: function () { return 'FOO!'; },
-    }
-  });
-  app.engine('handlebars', hbs.engine);
-  app.set('view engine', 'handlebars');
-  app.set('views', 'src/views');
-
-  app.use(express.static('public'));
+  initViews(app);
 
   return httpServer;
+}
+
+function initViews(app: express.Express) {
+    // @TODO: @LATER: make it work with __dirname, which points to dist/ .....
+    var hbs = create({
+      layoutsDir: "src/app/http/views/layouts",
+      partialsDir: "src/app/http/views/partials",
+      helpers: {
+          foo: function () { return 'FOO!'; },
+      }
+    });
+
+    app.engine('handlebars', hbs.engine);
+    app.set('view engine', 'handlebars');
+    app.set('views', 'src/app/http/views');
+  
+    app.use(express.static('public'));
 }
