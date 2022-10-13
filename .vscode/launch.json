@@ -7,16 +7,38 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Express app",
+            "name": "App Test",
+
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": [ "-r", "tsconfig-paths/register" ],
+
+            "program": "${workspaceFolder}\\src\\index.ts",
+            "args": [],
+            "env": {
+                "NODE_ENV": "dev"
+            },
+
+            "restart": true,
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**"],
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run Dev server",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceFolder}\\src\\index.ts",
+            "runtimeArgs": [  ],
+            "restart": true,
+            "console": "integratedTerminal",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\src\\index.ts",
-            "runtimeArgs": [ "-r", "ts-node/register", "-r", "tsconfig-paths/register" ],
-            "console": "integratedTerminal",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
+            "env": {
+                "NODE_ENV": "dev"
+            },
+            "internalConsoleOptions": "neverOpen"
         },
         {
             "type": "node",
@@ -29,6 +51,9 @@
             "args": [ "Jwks:update" ],
             "runtimeArgs": [ "-r", "ts-node/register", "-r", "tsconfig-paths/register" ],
             "console": "integratedTerminal",
+            "env": {
+                "NODE_ENV": "dev"
+            },
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

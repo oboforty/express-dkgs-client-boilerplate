@@ -3,12 +3,17 @@ import { Router, Request, Response } from 'express';
 
 import petsRoutes from './pets.route';
 
-const router = Router();
+export const router = Router();
 
 router.get('/', (req: Request, res: Response)=>{
-    res.send("Tesomsz");
+    res.send("mukodik bazsd meg");
 });
 
 router.use('/pets', petsRoutes);
 
-export default router;
+/**
+ * List of routes that are not protected by JWT auth
+ */
+export const unprotected = [
+    '/',
+];

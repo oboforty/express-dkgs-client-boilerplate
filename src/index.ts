@@ -1,16 +1,15 @@
 import { initServer } from './app/http/server';
-import { logger } from './infra/logging/logger';
-import dotenv from 'dotenv';
+import { logger/*,initializeLogging*/ } from './infra/logging/logger';
+import { initConfigs, getJWKSCacheConfig } from './infra/config/factory'
+import { initJWKSCache } from './infra/authentication/jwks';
 
-dotenv.config();
 
-async function main() {
-  const port = process.env.PORT || 5000;
+initConfigs().then(() => {
+  const port = process.env.PORT;
+
+  initJWKSCache(getJWKSCacheConfig());
 
   initServer().listen(port, () => {
     logger.info(`[${process.env.NODE_ENV}] Server is listening on port ${port}`);
   });
-}
-
-
-main();
+});

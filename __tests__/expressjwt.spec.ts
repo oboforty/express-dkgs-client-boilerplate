@@ -1,18 +1,8 @@
-import exp from 'constants';
 import { NextFunction, Response } from 'express';
-
-import {Secret} from 'jsonwebtoken';
 import { expressjwt, Request } from 'express-jwt';
-
 import jwkToPem from 'jwk-to-pem';
-import httpMocks from 'node-mocks-http';
 
-interface JWK_RSA_PRIV extends jwkToPem.RSA {
-    // full specification of an actual JWK...
-    use: "sig" | "enc",
-    kid: string,
-    alg: "RS256" | "RS512" // etc
-}
+import {JWK_RSA} from '../src/infra/authentication/jwks.types';
 
 describe('Test express-JWT capabilities', () => {
     /**
@@ -22,7 +12,7 @@ describe('Test express-JWT capabilities', () => {
     let mockResponse: Partial<Response>;
     let nextFunction: NextFunction = jest.fn();
 
-    const key_jwk_priv: JWK_RSA_PRIV = {
+    const key_jwk_priv: JWK_RSA = {
         "p": "9eq9GmafmnESRM_WRpWVj3A48OAtnb3_0NyCsgbUgpDGV300SyR6ZieUMtgRwz1KKqa-jGVIX6FhGd0sk7At2AtC9SD2TxU0eZ3bfJeYx0GgsNpg7n5QYiyQqoJ2P_RdMLoonAyMRav1j_T68ftkBHG-_fUU4wffq5Xhn09jLqE",
         "kty": "RSA",
         "q": "4eJMAwMg4jBbeg8iVEFjIHnRZCID9lDDm0w-IUzX72VhkmR90pnbxWEpHl1OhI1f9dJ1RMaRV7Gs0R2hXAy-AvKOTsqJvP8KAEMlFaGgkSXiBPpsPdbC5nARjK47pDeN6GE3mlMwA5gBLWx53s1I0JsiD8bApNF7LKUjsI_HmW8",
@@ -36,7 +26,7 @@ describe('Test express-JWT capabilities', () => {
         "dq": "jHce8ZiWcFHF8OdMX7yxmdZnAa-taxTaLs6ArFCOz03qGRDotXf8FIfQ_BLl6sPHcqRHTFd2tmPEpd2ZJBbAajDPkeudL6whWfxnKUZzBQ_bt2DKwsG0PXxfTW5jpEDvvBwIaa1lZDa4NLkKKCTcLOzrh4f-7_9ca2zd_sPKSX0",
         "n": "2Pyyc7pmREDv7iQZdZTWsG3n1hJWUOJ_JhcXGsH3lYs4gNyeHbk-ov_bDVqAAKPDQ1Z80oL2wIxGg9gz7h81OxtBxyhZbnw1SkmHz88fCELgpeQGa4C3yXh07ZRqgH_68tWzCpFlIgqybis59jLO0UgiDCtje2PdloJ4pWOMcmHc0rXQBZuSGif3SUe1I12l5K6Y_VEK73jWm3ndp3QO76G2OiVsLSnDkMtOHc25EgB_sG7p0kzLBuqzJfpSMetBxtNSxOVjh6lyKtYOpqFJzRWkNDfilwXh5n2lCv00GmoVACBHKgpyFqzqZYL31QoiaTkyoczwJr83WTla4QZwzw"
     };
-    const key_jwk_pub: JWK_RSA_PRIV = {
+    const key_jwk_pub: JWK_RSA = {
         "kty": "RSA",
         "e": "AQAB",
         "use": "sig",
