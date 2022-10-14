@@ -1,14 +1,17 @@
 import http, { Server } from 'http';
+
 import express from 'express';
 //import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import helmet from 'helmet';
-
+import { loggers } from 'winston';
 import { create, engine } from "express-handlebars";
 
 import jwt from './middleware/jwt';
-
 import { router, unprotected } from './routes';
+
+const logger = loggers.get('default');
+
 
 export function initServer(): Server {
   const app = express();
@@ -22,17 +25,36 @@ export function initServer(): Server {
     path: unprotected
   }));
 
-  // app.use((err: any, req: any, res: any, next: Function) => {
-  //   console.info("tesomszky?", err);
+  if (process.env.FRIENDLY_ERRORS == "yes") {
+    // @todo: @later: add Options type for server
 
-  //   next();
-  // });
+    app.use((err: any, req: express.Request, res: express.Response, next: Function) => {
+
+      if (err) {
+        // @TOOD: custom error page depending on status & common exception type
+
+        // General error: dump everything
+        logger.error(
+          typeof err + '\n'+
+          '   '+JSON.stringify(err)+'\n'+  
+          '   '+JSON.stringify(req.url)+'\n'+
+          '   '+JSON.stringify(req.params)+'\n'+
+          '   '+JSON.stringify(req.headers)+'\n'+
+          '   '+JSON.stringify(req.body)+'\n'+
+          '-------------------------------------'
+        );
+      }
+
+      next();
+    });
+  }
 
   app.use(router);
 
 //   app.use(morgan('combined', {
 //     skip(req, res) { return res.statusCode < 400; },
 //   }));
+// @TODO: add optional middleware based on process
   switch (process.env.NODE_ENV) {
     case 'prod':
       break;

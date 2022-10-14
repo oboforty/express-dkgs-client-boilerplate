@@ -1,0 +1,27 @@
+[Oct-14-2022 04:29:40] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:29:46] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:30:02] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:30:16] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:30:17] ERROR - EX-CLIENT: 	{"code":"credentials_required","status":401,"name":"UnauthorizedError","inner":{"message":"No authorization token was found"}}
+[Oct-14-2022 04:31:06] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:31:12] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:31:55] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:32:55] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:32:56] ERROR - EX-CLIENT: 	{"code":"credentials_required","status":401,"name":"UnauthorizedError","inner":{"message":"No authorization token was found"}}
+"/pets"
+{}
+{"host":"localhost:5000","connection":"keep-alive","cache-control":"max-age=0","sec-ch-ua":"\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","dnt":"1","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","sec-fetch-site":"same-origin","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","accept-encoding":"gzip, deflate, br","accept-language":"en,en-US;q=0.9,ca;q=0.8","cookie":"remember_token=66aac6cc-31aa-48f2-9d5f-2acedea5f9b0|0cace9b4fc9ce7380d28758a609749aa36192d8e304d73d72a99669a050ae8b5c46b72bd4750a5acb0e006c7fe30893cdb21ca4c22646890712db09c9885fb2e"}
+{}
+------------------------------
+[Oct-14-2022 04:33:39] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:33:48] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:33:57] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:34:13] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000
+[Oct-14-2022 04:34:13] ERROR - EX-CLIENT: 	object
+   {"code":"credentials_required","status":401,"name":"UnauthorizedError","inner":{"message":"No authorization token was found"}}
+   "/pets"
+   {}
+   {"host":"localhost:5000","connection":"keep-alive","cache-control":"max-age=0","sec-ch-ua":"\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","dnt":"1","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","sec-fetch-site":"same-origin","sec-fetch-mode":"navigate","sec-fetch-user":"?1","sec-fetch-dest":"document","accept-encoding":"gzip, deflate, br","accept-language":"en,en-US;q=0.9,ca;q=0.8","cookie":"remember_token=66aac6cc-31aa-48f2-9d5f-2acedea5f9b0|0cace9b4fc9ce7380d28758a609749aa36192d8e304d73d72a99669a050ae8b5c46b72bd4750a5acb0e006c7fe30893cdb21ca4c22646890712db09c9885fb2e","if-none-match":"W/\"31c-x2qsFNPq11S3hPveu1JVx3iZWhw\""}
+   {}
+-------------------------------------
+[Oct-14-2022 04:34:36] INFO - EX-CLIENT: 	[dev] Server is listening on port 5000

@@ -1,11 +1,14 @@
-import { initServer } from './app/http/server';
-import { logger/*,initializeLogging*/ } from './infra/logging/logger';
-import { initConfigs, getJWKSCacheConfig } from './infra/config/factory'
+import { initLogging } from './infra/logging/logger';
+
+import { initConfigs, getJWKSCacheConfig, getWinstonLoggerOptions } from './infra/config/factory'
 import { initJWKSCache } from './infra/authentication/jwks';
+import { initServer } from './app/http/server';
 
 
 initConfigs().then(() => {
   const port = process.env.PORT;
+
+  const logger = initLogging(getWinstonLoggerOptions());
 
   initJWKSCache(getJWKSCacheConfig());
 

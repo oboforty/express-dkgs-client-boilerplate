@@ -8,4 +8,4 @@ export default expressjwt({
   algorithms: ["RS256"],
 })
 //.unless({
-  path: ["/token"]
+  // path: ["/token"]
