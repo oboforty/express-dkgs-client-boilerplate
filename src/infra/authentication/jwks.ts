@@ -14,7 +14,7 @@ class JWKSCache implements JWKS {
     } = {
         last_replication: 0
     };
-    keys: TokenKeySet = {}
+    keys: TokenKeySet = []
 
     constructor() {}
 }
@@ -95,8 +95,11 @@ export async function getJWK(req: Request, token: Jwt | undefined): Promise<Secr
   const kid: string = token.header.kid;
   const currentTime = Date.now();
 
+  let jwk = _jwks.keys.find(k=>k.kid == kid);
+
   // trigger key replication if not found
-  if (!(kid in _jwks.keys)) {
+  if (!jwk) {
+    if (!_jwks.metadata) _jwks.metadata = {last_replication: 0};
 
     if (currentTime - _jwks.metadata.last_replication > options.fetch_min_interval) {
       // only fetch JWKS on kid miss if it hasn't already been done recently
@@ -116,14 +119,15 @@ export async function getJWK(req: Request, token: Jwt | undefined): Promise<Secr
     }
   }
 
-  if (!(kid in _jwks.keys)) {
+  // let's try again
+  jwk = _jwks.keys.find(k=>k.kid == kid);
+  if (!jwk || jwk === undefined) {
     // JWKS has already been requested recently, therefore kid is not found in the identity server
     // this may happen when key expires due to rotation. Client must re-issue or refresh tokens
     throw new Error("Invalid kid found");
   }
 
   // convert to PEM format, for express-jwt
-  const jwk = _jwks.keys[kid];
   return jwkToBuffer(jwk);
 }
 

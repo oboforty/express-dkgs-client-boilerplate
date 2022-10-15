@@ -7,5 +7,3 @@ export default expressjwt({
   //getToken: 
   algorithms: ["RS256"],
 })
-//.unless({
-  // path: ["/token"]

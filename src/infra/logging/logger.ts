@@ -14,6 +14,26 @@ const _logger = winston.loggers.add('default', {
   exitOnError: false,
 });
 
+function formatLogs(info: winston.Logform.TransformableInfo): string {
+  const { timestamp, level, message, label, ...metadata } = info;
+
+  const log: Array<string> = [
+    `[${[info.timestamp]}] ${info.level.toUpperCase()} - ${info.label}: ${info.message}`
+  ];
+
+  for (let [key, val] of Object.entries(metadata)) {
+
+    if (val instanceof Object || val instanceof Array)
+      val = JSON.stringify(val);
+
+    log.push(`   * ${key}: ${val}`);
+  }
+
+  if (log.length > 1)
+    log.push("----------------------------------------------------------");
+
+  return log.join("\n");
+}
 
 export function initLogging(opts: WinstonLoggerOptions): winston.Logger {
   //const loggerTransports: Array<winston.transport> = _logger.transports;
@@ -43,16 +63,10 @@ export function initLogging(opts: WinstonLoggerOptions): winston.Logger {
         winston.format.timestamp({format: 'MMM-DD-YYYY HH:mm:ss'}),
         winston.format.align(),
         //winston.format.errors(),
-        winston.format.printf(info =>  `[${[info.timestamp]}] ${info.level.toUpperCase()} - ${info.label}: ${info.message}`)
+        winston.format.printf(formatLogs)
       )
     }));
   }
 
   return _logger;
 }
-
-// if (err instanceof Error) {
-//   logger.log({ level: 'error', message: `${err.stack || err}` });
-// } else {
-//   logger.log({ level: 'error', message: err });
-// }

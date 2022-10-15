@@ -14,7 +14,7 @@ export type JWK_RSA = jwkToBuffer.RSA & JWK & {
 export type JWK_HMAC = JWK;
 
 // @TODO: @later: add support for multiple key types, we don't need these anyway
-export type TokenKeySet = {[kid: string]: JWK_RSA};
+export type TokenKeySet = Array<JWK_RSA>;
 
 export type JWKS = {
     keys: TokenKeySet

@@ -47,7 +47,7 @@ export function getWinstonLoggerOptions(): WinstonLoggerOptions {
     opts.log_insts.file = {
       level: process.env.LOG_LEVEL_FILE || default_loglvl,
       file_path: process.env.LOG_FILE || (
-        os.platform() === 'win32' ? "logs.txt" : "/var/log/dkgs.log"
+        os.platform() === 'win32' ? ".logs/logs.txt" : "/var/log/dkgs.log"
       )
     };
   }
@@ -74,6 +74,6 @@ export function getJWKSCacheConfig(): JWKSCacheOptions {
     fetch_on_miss: true,
     fetch_min_interval: parseInt(process.env.JWKS_REPLICATE_INTERVAL || '90') * DAY2MS,
     api_url: process.env.DOORS_IDENTITY_URI || obligatory(),
-    jwks_cache_file: process.env.JWKS_CACHE_FILE || "jwks.json"
+    jwks_cache_file: process.env.JWKS_CACHE_FILE || "jwks.cache.json"
   };
 }

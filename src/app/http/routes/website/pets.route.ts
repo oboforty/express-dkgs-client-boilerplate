@@ -1,6 +1,5 @@
 import { Router } from 'express';
-//import { deflate } from 'zlib';
-import petsController from '../../../domain/petstore/petsController';
+import petsController from '../../../../domain/petstore/petsController';
 
 const router = Router();
 
