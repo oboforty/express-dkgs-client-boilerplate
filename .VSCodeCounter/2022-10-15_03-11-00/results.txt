@@ -1,0 +1,67 @@
+Date : 2022-10-15 03:11:00
+Directory : d:\dev\dkgs-cli-express\src
+Total : 24 files,  570 codes, 126 comments, 192 blanks, all 888 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| TypeScript |         20 |        520 |        126 |        188 |        834 |
+| Handlebars |          4 |         50 |          0 |          4 |         54 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                      |         24 |        570 |        126 |        192 |        888 |
+| app                                                                    |         14 |        264 |         46 |         82 |        392 |
+| app\http                                                               |         14 |        264 |         46 |         82 |        392 |
+| app\http\middleware                                                    |          5 |        143 |         31 |         44 |        218 |
+| app\http\routes                                                        |          3 |         31 |          6 |         19 |         56 |
+| app\http\routes\api                                                    |          1 |         13 |          3 |          6 |         22 |
+| app\http\routes\website                                                |          2 |         18 |          3 |         13 |         34 |
+| app\http\views                                                         |          4 |         50 |          0 |          4 |         54 |
+| app\http\views\errors                                                  |          1 |         14 |          0 |          3 |         17 |
+| app\http\views\layouts                                                 |          1 |         14 |          0 |          0 |         14 |
+| app\http\views\pets                                                    |          1 |         18 |          0 |          0 |         18 |
+| cli                                                                    |          1 |         16 |          0 |          2 |         18 |
+| cli\commands                                                           |          1 |         16 |          0 |          2 |         18 |
+| domain                                                                 |          1 |         13 |          1 |          5 |         19 |
+| domain\petstore                                                        |          1 |         13 |          1 |          5 |         19 |
+| infra                                                                  |          5 |        224 |         75 |         83 |        382 |
+| infra\authentication                                                   |          2 |        110 |         50 |         46 |        206 |
+| infra\config                                                           |          1 |         47 |         18 |         15 |         80 |
+| infra\logging                                                          |          2 |         67 |          7 |         22 |         96 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                               | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\dev\dkgs-cli-express\src\app\http\handlebars.ts                     | TypeScript |          8 |          0 |          1 |          9 |
+| d:\dev\dkgs-cli-express\src\app\http\middleware\adminGuard.ts          | TypeScript |          9 |          2 |          3 |         14 |
+| d:\dev\dkgs-cli-express\src\app\http\middleware\errorHandlers.ts       | TypeScript |        109 |         28 |         30 |        167 |
+| d:\dev\dkgs-cli-express\src\app\http\middleware\errorHandlers.types.ts | TypeScript |         11 |          0 |          4 |         15 |
+| d:\dev\dkgs-cli-express\src\app\http\middleware\jsonApi.ts             | TypeScript |          8 |          0 |          4 |         12 |
+| d:\dev\dkgs-cli-express\src\app\http\middleware\jwt.ts                 | TypeScript |          6 |          1 |          3 |         10 |
+| d:\dev\dkgs-cli-express\src\app\http\routes\api\index.ts               | TypeScript |         13 |          3 |          6 |         22 |
+| d:\dev\dkgs-cli-express\src\app\http\routes\website\index.ts           | TypeScript |         12 |          3 |          7 |         22 |
+| d:\dev\dkgs-cli-express\src\app\http\routes\website\pets.route.ts      | TypeScript |          6 |          0 |          6 |         12 |
+| d:\dev\dkgs-cli-express\src\app\http\server.ts                         | TypeScript |         32 |          9 |         14 |         55 |
+| d:\dev\dkgs-cli-express\src\app\http\views\errors\error.handlebars     | Handlebars |         14 |          0 |          3 |         17 |
+| d:\dev\dkgs-cli-express\src\app\http\views\index.handlebars            | Handlebars |          4 |          0 |          1 |          5 |
+| d:\dev\dkgs-cli-express\src\app\http\views\layouts\main.handlebars     | Handlebars |         14 |          0 |          0 |         14 |
+| d:\dev\dkgs-cli-express\src\app\http\views\pets\index.handlebars       | Handlebars |         18 |          0 |          0 |         18 |
+| d:\dev\dkgs-cli-express\src\cli.ts                                     | TypeScript |         26 |          0 |          6 |         32 |
+| d:\dev\dkgs-cli-express\src\cli\commands\JwksCommand.ts                | TypeScript |         16 |          0 |          2 |         18 |
+| d:\dev\dkgs-cli-express\src\domain\petstore\petsController.ts          | TypeScript |         13 |          1 |          5 |         19 |
+| d:\dev\dkgs-cli-express\src\global.d.ts                                | TypeScript |         15 |          4 |          7 |         26 |
+| d:\dev\dkgs-cli-express\src\index.ts                                   | TypeScript |         12 |          0 |          7 |         19 |
+| d:\dev\dkgs-cli-express\src\infra\authentication\jwks.ts               | TypeScript |         84 |         43 |         35 |        162 |
+| d:\dev\dkgs-cli-express\src\infra\authentication\jwks.types.ts         | TypeScript |         26 |          7 |         11 |         44 |
+| d:\dev\dkgs-cli-express\src\infra\config\factory.ts                    | TypeScript |         47 |         18 |         15 |         80 |
+| d:\dev\dkgs-cli-express\src\infra\logging\logger.ts                    | TypeScript |         50 |          7 |         16 |         73 |
+| d:\dev\dkgs-cli-express\src\infra\logging\logger.types.ts              | TypeScript |         17 |          0 |          6 |         23 |
+| Total                                                                  |            |        570 |        126 |        192 |        888 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+

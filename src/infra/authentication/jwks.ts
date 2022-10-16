@@ -4,6 +4,7 @@ import { Secret, Jwt } from 'jsonwebtoken';
 import { Request } from 'express';
 import { ExceptionHandler } from 'winston';
 import jwkToBuffer from 'jwk-to-pem';
+import axios from 'axios';
 
 import { JWKS, JWK_RSA, TokenKeySet, OpenIDConfiguration, JWKSCacheOptions } from './jwks.types';
 
@@ -104,6 +105,7 @@ export async function getJWK(req: Request, token: Jwt | undefined): Promise<Secr
     if (currentTime - _jwks.metadata.last_replication > options.fetch_min_interval) {
       // only fetch JWKS on kid miss if it hasn't already been done recently
       // as identity server JWKS is only rotated a few times a year 
+
       const jwks = await fetchJWKSEndpoint(
         new URL('/.well-known/openid-configuration', options.api_url)
       );
@@ -138,24 +140,27 @@ export async function getJWK(req: Request, token: Jwt | undefined): Promise<Secr
  * @returns JWK keyset
  */
 export async function fetchJWKSEndpoint(jwks_uri: URL | string): Promise<JWKS | null> {
-    try {
-        const resOpenID = await fetch(jwks_uri);
+  try {
+    if (jwks_uri instanceof URL)
+      jwks_uri = jwks_uri.href
 
-        if (!resOpenID.ok)
-            throw new Error("JSON error??");
+    const resOpenID = await axios.get(jwks_uri);
 
-        const openID: OpenIDConfiguration = await resOpenID.json();
+    if (resOpenID.status !== 200)
+      throw new Error("JSON error??");
 
-        const resJWKS = await fetch(openID.jwks_uri);
+    const openID: OpenIDConfiguration = resOpenID.data;
 
-        if (!resJWKS.ok)
-            throw new Error("JSON error??");
+    const resJWKS = await axios.get(openID.jwks_uri);
 
-        return await resJWKS.json();
-    } catch (error) {
-        // @todo: error logging if EP is unreachable
-        console.error(error);
-    }
+    if (resJWKS.status !== 200)
+      throw new Error("JSON error??");
 
-    return null;
+    return resJWKS.data;
+  } catch (error) {
+    // @todo: error logging if EP is unreachable
+    console.error(error);
+  }
+
+  return null;
 }
